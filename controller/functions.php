@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-include_once '../model/ado.php';
 $userid = $_SESSION["usuario_id"];
 
 function debug($xpto) {
@@ -9,7 +7,7 @@ function debug($xpto) {
     print_r($xpto);
     echo "</pre>";
     echo "<hr/>";
-    #die();
+    die();
 }
 
 function recebe_mensagem() {
@@ -20,26 +18,27 @@ function recebe_mensagem() {
     }
 }
 
-function escreve_qtd($userid, $con) {
+function escreve_qtd($userid) {
+    include($_SERVER['DOCUMENT_ROOT'] . "/feedback/model/ado.php");
     $sql = "select quadradinho, count(*) as qtd from 
         xtech_log 
-        where usuario = ".$userid . 
-        " and DATE_FORMAT(data,'%Y/%m/%d') = CURDATE() 
+        where usuario = " . $userid .
+            " and DATE_FORMAT(data,'%Y/%m/%d') = CURDATE() 
         group by quadradinho";
-    
-    $result = mysql_query($sql, $con);
-    
-    for($i = 0; $dados[$i] = mysql_fetch_assoc($result); $i++) ;
-    array_pop($dados);
-    mysql_close();
+
+    $result = $PDO->query($sql);
+    $dados = $result->fetchAll(PDO::FETCH_ASSOC);
+    #debug($dados);
     return $dados;
 }
 
-function recebe_qtd() {
-    if (isset($_GET["eq"])) {
-        debug(base64_decode($_REQUEST));
-        echo base64_decode($_GET["eq"]);
-    } else {
-        echo "";
+function ler_valores($num, $dados) {
+    foreach ($dados as $key => $dado) {
+        foreach ($dado as $key => $value) {
+            if ($key == "quadradinho" && $value == $num) {
+                echo next($dado);
+                break;
+            }
+        }
     }
 }

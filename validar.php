@@ -3,7 +3,6 @@ session_start();
  
 //VALIDAÇÃO PARA QUE O USUARIO NÃO INVADA O SITE PELA URL
 //VERIFICA SE NÃO EXISTE A SESSAO PERFIL
- 
 if(!isset ($_SESSION["perfil"])){
 session_destroy();
  

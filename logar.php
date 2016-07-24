@@ -6,29 +6,19 @@
     </head>
     <body>
         <?php
-        //session é um espaço de memoria no navegador
-        session_start();
+        include_once './model/ado.php';
 
-        $login = $_POST["login"];
-        $senha = $_POST["senha"];
+        $login = $_REQUEST["login"];
+        $senha = $_REQUEST["senha"];
 
         $sql = "select * from usuario where 
             usuario = '" . $login . "' and senha = '" . $senha . "'";
-
-        include_once './model/ado.php';
-
-
-        $rs = mysql_query($sql, $con);
-
-        //verificando se o numero de linhas do resultado é igual a 1
-        //pois o login é UNIQUE  e nao existe mais de 1
-        if (mysql_num_rows($rs) == 1) {
-
-            //trago as informações do banco
-            //armazenando-as num array chamado $row
-            //row[0]
-            $row = mysql_fetch_array($rs);
-
+        
+        $rs = $PDO->query($sql);
+        $row_count = $rs->rowCount();
+        if ($row_count == 1) {
+            $row = $rs->fetch(PDO::FETCH_ASSOC);
+            
             //criando uma sessao chamada nick
             $_SESSION["usuario_id"] = $row["id"];
             $_SESSION["usuario"] = $row["usuario"];
@@ -41,8 +31,6 @@
             $msg = base64_encode("Usuário / senha inválidos");
             header("location:index.php?m=" . $msg);
         }
-
-        mysql_close($con);
         ?>
     </body>
 </html>
