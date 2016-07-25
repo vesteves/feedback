@@ -13,6 +13,9 @@
         #debug($dados);
 
         ?>
+        
+        <!-- *** -->
+        <!-- Controle de ponto Início -->
         <h1>Ponto</h1>
         <form method="post" action="ponto.php">
             <p>
@@ -23,6 +26,21 @@
             <input type="submit" name="ponto-s"/>
         </form>
         <hr/>
+        <!-- Controle de ponto Fim -->
+        
+        <!-- Controle de telefone Início -->
+        <h1>Telefone</h1>
+        <form method="post" action="telefone.php">
+            <p>
+                <label for="tel-e">Clique aqui para marcar início da chamada</label>
+                <input type="submit" name="tel-e"/>
+            </p>
+            <label for="tel-s">Clique aqui para marcar fim da chamada</label>
+            <input type="submit" name="tel-s"/>
+        </form>
+        <hr/>
+        <!-- Controle de telefone Fim -->
+        
         <h2>Método de pagamento</h2>
         <form method="post" action="log.php">
             <p>
