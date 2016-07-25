@@ -10,9 +10,9 @@ function debug($xpto) {
     die();
 }
 
-function recebe_mensagem() {
-    if (isset($_GET["m"])) {
-        echo base64_decode($_GET["m"]);
+function recebe_mensagem($xpto) {
+    if (isset($_GET[$xpto])) {
+        echo base64_decode($_GET[$xpto]);
     } else {
         echo "";
     }

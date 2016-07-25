@@ -16,7 +16,7 @@ if (isset($_POST["tel-e"])) {
         $row = $result->fetch(PDO::FETCH_ASSOC);
         $_SESSION["id_tel"] = $row["id"];
         $msg = base64_encode("Telefone iniciado.");
-        header("location:acao.php?m=" . $msg);
+        header("location:acao.php?t=" . $msg);
     } else {
         echo "Erro em iniciar o telefone.";
     }
@@ -30,7 +30,7 @@ if (isset($_POST["tel-e"])) {
 
     if ($update) {
         $msg = base64_encode("Telefone finalizado.");
-        header("location:acao.php?m=" . $msg);
+        header("location:acao.php?t=" . $msg);
     } else {
         echo "Erro em finalizar o telefone.";
     }

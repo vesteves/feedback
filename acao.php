@@ -11,9 +11,7 @@
         include_once './controller/functions.php';
         $dados = escreve_qtd($userid);
         #debug($dados);
-
         ?>
-        
         <!-- *** -->
         <!-- Controle de ponto Início -->
         <h1>Ponto</h1>
@@ -25,6 +23,7 @@
             <label for="ponto-s">Clique aqui para marcar a saída</label>
             <input type="submit" name="ponto-s"/>
         </form>
+        <?php recebe_mensagem("p"); ?>
         <hr/>
         <!-- Controle de ponto Fim -->
         
@@ -38,9 +37,11 @@
             <label for="tel-s">Clique aqui para marcar fim da chamada</label>
             <input type="submit" name="tel-s"/>
         </form>
+        <?php recebe_mensagem("t"); ?>
         <hr/>
         <!-- Controle de telefone Fim -->
         
+        <!-- Controle de Pagamento Início -->
         <h2>Método de pagamento</h2>
         <form method="post" action="log.php">
             <p>
@@ -86,7 +87,7 @@
             <p>
                 <label for="mundipagg">Mundipagg</label>
                 <button name = "quadradinho" value="9" type="submit">Enviar</button>
-                <input type="text" value="<?php ler_valores("0", $dados) ?>" disabled="true"/>
+                <input type="text" value="<?php ler_valores("9", $dados) ?>" disabled="true"/>
             </p>
             <p>
                 <label for="paypal_e">Paypal Express</label>
@@ -95,7 +96,9 @@
             </p>
         </form>
         <hr/>
+        <!-- Controle de Pagamento Fim -->
 
+        <!-- Controle de Envio Início -->
         <h2>Método de Envio</h2>
         <form method="post" action="log.php">
             <p>
@@ -125,7 +128,9 @@
             </p>
         </form>
         <hr/>
+        <!-- Controle de Envio Fim -->
 
+        <!-- Controle de Marketing Início -->
         <h2>Marketing</h2>
         <form method="post" action="log.php">
             <p>
@@ -175,7 +180,9 @@
             </p>
         </form>
         <hr/>
+        <!-- Controle de Marketing Fim -->
         
+        <!-- Controle de Infra Início -->
                 <h2>Infra</h2>
         <form method="post" action="log.php">
             <p>
@@ -195,8 +202,9 @@
             </p>
         </form>
         <hr/>
+        <!-- Controle de Infra Fim -->
 
-
+        <!-- Controle de Suporte Geral Início -->
         <h2>Suporte Geral</h2>
         <form method="post" action="log.php">
             <p>
@@ -205,10 +213,9 @@
                 <input type="text" value="<?php ler_valores("25", $dados) ?>" disabled="true"/>
             </p>
         </form>
+        <!-- Controle de Suporte Geral Início -->
         <hr/>
-        <?php
-        recebe_mensagem();
-        ?>
+        <?php recebe_mensagem("m"); ?>
     </body>
 </html>
 

@@ -16,8 +16,8 @@ if (isset($_POST["ponto-e"])) {
         $result = $PDO->query($sql);
         $row = $result->fetch(PDO::FETCH_ASSOC);
         $_SESSION["id_ponto"] = $row["id"];
-        $msg = base64_encode("Ponto cadastrado.");
-        header("location:acao.php?m=" . $msg);
+        $msg = base64_encode("Ponto de entrada cadastrado.");
+        header("location:acao.php?p=" . $msg);
     } else {
         echo "Erro no ponto de entrada.";
     }
@@ -31,7 +31,7 @@ if (isset($_POST["ponto-e"])) {
 
     if ($update) {
         $msg = base64_encode("Ponto de saída cadastrado.");
-        header("location:acao.php?m=" . $msg);
+        header("location:acao.php?p=" . $msg);
     } else {
         echo "Erro no ponto de saída.";
     }
