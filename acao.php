@@ -79,7 +79,7 @@
         <hr/>
 
         <h2>Método de Envio</h2>
-        <form method="post" action="envio.php">
+        <form method="post" action="log.php">
             <p>
                 <label for="flatrate">Flatrate</label>
                 <button name = "quadradinho" value="15" type="submit">Enviar</button>
@@ -109,7 +109,7 @@
         <hr/>
 
         <h2>Marketing</h2>
-        <form method="post" action="marketing.php">
+        <form method="post" action="log.php">
             <p>
                 <label for="campaignator">Campaignator</label>
                 <button name = "quadradinho" value="16" type="submit">Enviar</button>
@@ -157,10 +157,30 @@
             </p>
         </form>
         <hr/>
+        
+                <h2>Infra</h2>
+        <form method="post" action="log.php">
+            <p>
+                <label for="ssl">SSL</label>
+                <button name = "quadradinho" value="26" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("26", $dados) ?>" disabled="true"/>
+            </p>
+            <p>
+                <label for="dominio">Domínio</label>
+                <button name = "quadradinho" value="27" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("27", $dados) ?>" disabled="true"/>
+            </p>
+            <p>
+                <label for="email">E-mail</label>
+                <button name = "quadradinho" value="28" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("28", $dados) ?>" disabled="true"/>
+            </p>
+        </form>
+        <hr/>
 
 
         <h2>Suporte Geral</h2>
-        <form method="post" action="marketing.php">
+        <form method="post" action="log.php">
             <p>
                 <label for="suporte_geral">Suporte Geral</label>
                 <button name = "quadradinho" value="25" type="submit">Enviar</button>

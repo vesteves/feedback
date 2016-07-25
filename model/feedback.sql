@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `feedback_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `feedback_db`;
 -- MySQL dump 10.13  Distrib 5.5.50, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: feedback_db

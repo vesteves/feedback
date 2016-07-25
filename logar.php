@@ -19,6 +19,8 @@
         if ($row_count == 1) {
             $row = $rs->fetch(PDO::FETCH_ASSOC);
             
+            session_start();
+            
             //criando uma sessao chamada nick
             $_SESSION["usuario_id"] = $row["id"];
             $_SESSION["usuario"] = $row["usuario"];
