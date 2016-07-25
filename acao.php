@@ -2,8 +2,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Sistema de Feedback e métricas</title>
-        <script src="js/dojo/utils.js" type="text/javascript"></script>
-        <script src="js/dojo/dojo.js" type="text/javascript"></script>
     </head>
     <body>
         <?php
@@ -13,19 +11,19 @@
         #debug($dados);
         ?>
         <!-- *** -->
-        <!-- Controle de ponto Início -->
-        <h1>Ponto</h1>
-        <form method="post" action="ponto.php">
+        <h1>Sistema de Métricas do Suporte</h1>
+        <!-- *** -->
+        
+        <!-- Controle de Suporte Geral Início -->
+        <h2>Suporte Geral</h2>
+        <form method="post" action="log.php">
             <p>
-                <label for="ponto-e">Clique aqui para marcar a entrada</label>
-                <input type="submit" name="ponto-e"/>
+                <label for="suporte_geral">Suporte Geral</label>
+                <button name = "quadradinho" value="25" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("25", $dados) ?>" disabled="true"/>
             </p>
-            <label for="ponto-s">Clique aqui para marcar a saída</label>
-            <input type="submit" name="ponto-s"/>
         </form>
-        <?php recebe_mensagem("p"); ?>
-        <hr/>
-        <!-- Controle de ponto Fim -->
+        <!-- Controle de Suporte Geral Fim -->
         
         <!-- Controle de telefone Início -->
         <h1>Telefone</h1>
@@ -204,17 +202,21 @@
         <hr/>
         <!-- Controle de Infra Fim -->
 
-        <!-- Controle de Suporte Geral Início -->
-        <h2>Suporte Geral</h2>
-        <form method="post" action="log.php">
-            <p>
-                <label for="suporte_geral">Suporte Geral</label>
-                <button name = "quadradinho" value="25" type="submit">Enviar</button>
-                <input type="text" value="<?php ler_valores("25", $dados) ?>" disabled="true"/>
-            </p>
-        </form>
-        <!-- Controle de Suporte Geral Início -->
         <hr/>
+        <!-- Controle de ponto Início -->
+        <h2>Ponto</h2>
+        <form method="post" action="ponto.php">
+            <p>
+                <label for="ponto-e">Clique aqui para marcar a entrada</label>
+                <input type="submit" name="ponto-e"/>
+            </p>
+            <label for="ponto-s">Clique aqui para marcar a saída</label>
+            <input type="submit" name="ponto-s"/>
+        </form>
+        <?php recebe_mensagem("p"); ?>
+        <hr/>
+        <!-- Controle de ponto Fim -->
+        
         <?php recebe_mensagem("m"); ?>
     </body>
 </html>
