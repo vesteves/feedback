@@ -23,6 +23,7 @@
                 <input type="text" value="<?php ler_valores("25", $dados) ?>" disabled="true"/>
             </p>
         </form>
+        <hr/>
         <!-- Controle de Suporte Geral Fim -->
         
         <!-- Controle de telefone Início -->
