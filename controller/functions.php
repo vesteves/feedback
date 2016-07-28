@@ -42,3 +42,46 @@ function ler_valores($num, $dados) {
         }
     }
 }
+
+function select_tabela($tabela) {
+    include($_SERVER['DOCUMENT_ROOT'] . "/feedback_dev/model/ado.php");
+    $sql = "select * from " . $tabela;
+    $result = $PDO->query($sql);
+    $dados = $result->fetchAll(PDO::FETCH_ASSOC);
+    return $dados;
+}
+
+function rel_horario() {
+    include($_SERVER['DOCUMENT_ROOT'] . "/feedback_dev/model/ado.php");
+    $dados = select_tabela("usuario");
+
+    foreach ($dados as $key => $dado) {
+        #dia
+        $sql = "select (DATE_FORMAT(NOW(),'%H') - DATE_FORMAT(entrada,'%H')) as tempo 
+                    from ponto 
+                    where DATE_FORMAT(entrada,'%d/%m/%Y') = DATE_FORMAT(CURDATE(),'%d/%m/%Y') 
+                    and usuario = " . $dado["id"];
+        $db = $PDO->query($sql);
+        $result = $db->fetch(PDO::FETCH_ASSOC);
+
+        #semana
+        $sql = "select (DATE_FORMAT(saida,'%H') - DATE_FORMAT(entrada,'%H')) as tempo 
+                    from ponto 
+                    where saida BETWEEN CURDATE()-7 AND CURDATE() 
+                    and usuario = " . $dado["id"];
+        $db = $PDO->query($sql);
+        $result2 = $db->fetchAll(PDO::FETCH_ASSOC);
+
+        #bolha
+        $media_semana = $cont = $sum = $old = 0;
+        foreach ($result2 as $key => $resultado) {
+            $sum = $old + $resultado["tempo"];
+            $old = $resultado["tempo"];
+            $cont++;
+        }
+        $media_semana = number_format($sum / $cont, 2);
+        echo "<tr><td>{$dado["usuario"]}</td>
+                <td>{$result["tempo"]}</td>
+                <td>{$media_semana}</td></tr>";
+    }
+}

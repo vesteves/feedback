@@ -22,11 +22,13 @@ if (isset($_POST["ponto-e"])) {
         echo "Erro no ponto de entrada.";
     }
 } elseif (isset($_POST["ponto-s"])) {
-    $sql = "update ponto set saida = now() where id = :id_ponto";
+    $sql = "update ponto set saida = now() where DATE_FORMAT(entrada,'%Y/%m/%d') = CURDATE() and usuario = :usuario_id";
+
+    #$sql = "update ponto set saida = now() where id = :id_ponto";
 
     $db = $PDO->prepare($sql);
-    $db->bindParam(':id_ponto', $_SESSION["id_ponto"]);
-
+    $db->bindParam(':usuario_id', $_SESSION["usuario_id"]);
+    #var_dump($db);die();
     $update = $db->execute();
 
     if ($update) {

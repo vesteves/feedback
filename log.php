@@ -22,5 +22,6 @@ if (isset($_REQUEST["quadradinho"])) {
         header("location:acao.php?m=" . $msg);
     }
 } else {
-    echo "eu hein";
+    $msg = base64_encode("Sessão expirou. Favor refaça o login.");   
+    header("location:login.php?m=" . $msg);
 }

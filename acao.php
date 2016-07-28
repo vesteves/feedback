@@ -5,8 +5,8 @@
     </head>
     <body>
         <?php
-        include_once './validar.php';
-        include_once './controller/functions.php';
+        include($_SERVER['DOCUMENT_ROOT'] . "/feedback/controller/validar.php");
+        include($_SERVER['DOCUMENT_ROOT'] . "/feedback/controller/functions.php");
         $dados = escreve_qtd($userid);
         #debug($dados);
         ?>
@@ -14,6 +14,14 @@
         <h1>Sistema de Métricas do Suporte</h1>
         <!-- *** -->
         
+        <!-- Menu Início -->
+        <div id = "menu">
+            <?php if ($_SESSION["perfil"] == "2") { ?>
+                <a href="relatorios.php">Relatórios</a>
+            <?php } ?>
+        </div>
+        <!-- Menu Fim -->
+
         <!-- Controle de Suporte Geral Início -->
         <h2>Suporte Geral</h2>
         <form method="post" action="log.php">
