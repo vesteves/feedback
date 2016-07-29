@@ -13,15 +13,20 @@
         <!-- *** -->
         <h1>Sistema de Métricas do Suporte</h1>
         <!-- *** -->
-        
+
         <!-- Menu Início -->
         <div id = "menu">
+            <!-- Sexta Início <a href="metricas_pessoais.php">Métricas Pessoais</a> Sexta Início -->
             <?php if ($_SESSION["perfil"] == "2") { ?>
-                <a href="relatorios.php">Relatórios</a>
+                <a href="relatorios.php"> / Relatórios</a>
             <?php } ?>
         </div>
         <!-- Menu Fim -->
-
+        <hr/>
+        <!-- Receber mensagem INICIO -->
+        <?php recebe_mensagem("m"); ?>
+        <!-- Receber mensagem FIM -->
+        <hr/>
         <!-- Controle de Suporte Geral Início -->
         <h2>Suporte Geral</h2>
         <form method="post" action="log.php">
@@ -33,7 +38,7 @@
         </form>
         <hr/>
         <!-- Controle de Suporte Geral Fim -->
-        
+
         <!-- Controle de telefone Início -->
         <h1>Telefone</h1>
         <form method="post" action="telefone.php">
@@ -47,7 +52,7 @@
         <?php recebe_mensagem("t"); ?>
         <hr/>
         <!-- Controle de telefone Fim -->
-        
+
         <!-- Controle de Pagamento Início -->
         <h2>Método de pagamento</h2>
         <form method="post" action="log.php">
@@ -188,9 +193,9 @@
         </form>
         <hr/>
         <!-- Controle de Marketing Fim -->
-        
+
         <!-- Controle de Infra Início -->
-                <h2>Infra</h2>
+        <h2>Infra</h2>
         <form method="post" action="log.php">
             <p>
                 <label for="ssl">SSL</label>
@@ -207,11 +212,15 @@
                 <button name = "quadradinho" value="28" type="submit">Enviar</button>
                 <input type="text" value="<?php ler_valores("28", $dados) ?>" disabled="true"/>
             </p>
+            <p>
+                <label for="importacao">Importação de Newsletter/produtos</label>
+                <button name = "quadradinho" value="28" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("29", $dados) ?>" disabled="true"/>
+            </p>
         </form>
         <hr/>
         <!-- Controle de Infra Fim -->
 
-        <hr/>
         <!-- Controle de ponto Início -->
         <h2>Ponto</h2>
         <form method="post" action="ponto.php">
@@ -225,7 +234,6 @@
         <?php recebe_mensagem("p"); ?>
         <hr/>
         <!-- Controle de ponto Fim -->
-        
         <?php recebe_mensagem("m"); ?>
     </body>
 </html>
