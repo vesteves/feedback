@@ -214,8 +214,13 @@
             </p>
             <p>
                 <label for="importacao">Importação de Newsletter/produtos</label>
-                <button name = "quadradinho" value="28" type="submit">Enviar</button>
+                <button name = "quadradinho" value="29" type="submit">Enviar</button>
                 <input type="text" value="<?php ler_valores("29", $dados) ?>" disabled="true"/>
+            </p>
+            <p>
+                <label for="bonus">Bônus de cartão e plus</label>
+                <button name = "quadradinho" value="30" type="submit">Enviar</button>
+                <input type="text" value="<?php ler_valores("30", $dados) ?>" disabled="true"/>
             </p>
         </form>
         <hr/>
